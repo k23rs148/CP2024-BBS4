@@ -49,6 +49,7 @@ h1 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
 .form-group {
@@ -69,7 +70,7 @@ label {
     font-size: 16px;
     border: 1px solid #ced4da;
     border-radius: 4px;
-    transition: border-color 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-control:focus {
@@ -79,7 +80,7 @@ label {
 }
 
 textarea.form-control {
-    min-height: 120px;
+    min-height: 100px;
     resize: vertical;
 }
 
@@ -97,18 +98,19 @@ textarea.form-control {
 
 /* ボタン */
 .button-group {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .btn-primary {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.15s ease-in-out;
+    transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
@@ -120,18 +122,6 @@ textarea.form-control {
     cursor: not-allowed;
 }
 
-/* アニメーション */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* 投稿一覧 */
 .posts-container {
     margin-top: 30px;
@@ -139,7 +129,7 @@ textarea.form-control {
 
 .posts-container h2 {
     font-size: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #333;
 }
 
@@ -186,6 +176,7 @@ textarea.form-control {
 .post-content {
     color: #333;
     line-height: 1.6;
+    margin-bottom: 10px;
     white-space: pre-wrap;
     word-break: break-word;
 }
@@ -205,6 +196,25 @@ textarea.form-control {
     border-top: 4px solid #3498db;
     border-radius: 50%;
     animation: spin 1s linear infinite;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .post {
+        padding: 12px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
 }
 
 /* アニメーション */
