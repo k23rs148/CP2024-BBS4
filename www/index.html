@@ -58,7 +58,7 @@ function updateCharacterCount(inputId, counterId, maxLength) {
     input.on('input', () => {
         const length = input.val().length;
         const remaining = maxLength - length; // 残り文字数を計算
-        counter.text(`${remaining}/${maxLength}`);
+        counter.text(`${remaining}/${maxLength}`); // 残り文字数を表示
     
         if (length > maxLength) {
             counter.addClass('error');
@@ -146,13 +146,20 @@ function escapeHtml(str) {
 // タイムスタンプのフォーマット
 function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
+    const now = new Date();
+    const diffTime = now - date; // 時間差を計算
+     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // 日数に変換
+
+     if (diffDays < 1) {
     return date.toLocaleString('ja-JP', {
         year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit'
+        month: '2-digit'
     });
+    } else if (diffDays === 1) {
+        return '昨日';
+    } else {
+        return `${diffDays}日前`;
+    }
 }
 
 // 投稿の編集権限チェック
